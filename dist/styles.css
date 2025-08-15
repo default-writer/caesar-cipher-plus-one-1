@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
+
+* {
+  font-family: "Roboto Mono", sans-serif;
+  font-size: 10px;
+}
+
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body,
+textarea {
+  background: #ffffff;
+}
+
+canvas {
+  display: block;
+  margin: auto;
+}
+
+h1 {
+  font-weight: 200;
+  font-size: 16px;
+  margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+}
+h1,
+h2 {
+  color: green;
+}
+label {
+  width: auto;
+}
+table {
+  width: 100%;
+}
+td {
+  width: 50%;
+}
+
+h1,
+h2,
+label,
+input,
+textarea,
+div {
+  padding: 0px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+table,
+tr,
+td {
+  padding: 0px;
+  border-spacing: 0px;
+}
+
+input[type="button"],
+input[type="submit"] {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+input[type="file"] {
+  padding: 0px;
+  margin: 0px;
+  height: 0px;
+  opacity: 0;
+}
+
+div[hidden] {
+  padding: 0px;
+  margin: 0px;
+  height: 0px;
+}
+
+label {
+  display: block;
+}
+
+textarea {
+  padding: 0px;
+  width: calc(100% - 10px);
+  height: 80px;
+}
+
+#alphabet1,
+#alphabet2,
+#sha_alphabet1,
+#sha_plaintext1,
+#sha_alphabet2,
+#sha_plaintext2 {
+  overflow: hidden;
+  height: auto;
+  width: calc(100% - 10px);
+}
+
+div {
+  word-break: break-word;
+  width: 100%;
+}
+
+input:focus,
+textarea:focus {
+  outline-style: hidden;
+  outline-color: transparent;
+  outline-width: 0px;
+}
+
+textarea {
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+  overflow-y: scroll;
+  resize: none;
+}
+
+textarea:-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+textarea:-webkit-scrollbar {
+  background-color: transparent;
+  border-radius: 2px;
+}
+
+textarea:hover::-webkit-scrollbar-thumb {
+  background-color: silver;
+  border-radius: 2px;
+}
+
+textarea:focus-within::-webkit-scrollbar-thumb {
+  background-color: rgb(0, 0, 0);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar {
+  background: transparent;
+  border-radius: 2px;
+  height: 4px;
+  width: 4px;
+}
