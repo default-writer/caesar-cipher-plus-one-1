@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Parcel Sandbox</title>
+	<meta charset="UTF-8" />
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen" />
+</head>
+<body>
+  <h1>Caesar Cipher +1</h1>
+  <table>
+    <tr>
+      <td>
+        <label>plaintext:</label>
+        <textarea id="plaintext1">The atmosphere of Mars is about 100 times thinner than Earth's, and it is 95 percent carbon dioxide. Here's a breakdown of its composition, according to a NASA fact sheet:
+
+Carbon dioxide: 95.32 percent
+Nitrogen: 2.7 percent
+Argon: 1.6 percent
+Oxygen: 0.13 percent
+Carbon monoxide: 0.08 percent
+Also, minor amounts of: water, nitrogen oxide, neon, hydrogen-deuterium-oxygen, krypton and xenon.        </textarea>
+      </td>
+      <td>
+        <label>cipher:</label>
+        <textarea id="plaintext2"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>sha1:</label>
+        <input type="text" id="sha_plaintext1" />
+      </td>
+      <td>
+        <label>sha1:</label>
+        <input type="text" id="sha_plaintext2" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <textarea id="alphabet1"></textarea>
+      </td>
+      <td>
+        <textarea id="alphabet2"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>sha1:</label>
+        <input id="sha_alphabet1" />
+      </td>
+      <td>
+        <label>sha1:</label>
+        <input id="sha_alphabet2" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="submit" id="export_json" value="export" />
+        <input type="submit" id="export_public_json" value="export public" />
+      </td>
+      <td>
+        <div hidden>
+          <input type="file" id="upload_json" accept=".json" multiple />
+        </div>
+        <input type="button" id="import_json" value="import" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="button" id="alphabet_default" value="default" />
+        <input type="button" id="alphabet_basic" value="basic" />
+        <input type="button" id="alphabet_random" value="random" />
+        <input type="button" id="randomize" value="iv" />
+        <input type="button" id="encrypt" value="enc" />
+        <input type="button" id="app1" value="=>" />
+      </td>
+      <td>
+        <input type="button" id="app2" value="<=" />
+        <input type="button" id="decrypt" value="dec" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="number" id="shift1" name="shift" value="1" min="0" max="2147483647" step="1" />
+        <input type="number" id="IV1" min="0" max="2147483647" step="1" />
+      </td>
+      <td>
+        <input type="number" id="shift2" name="shift" value="1" min="0" max="2147483647" step="1" />
+        <input type="number" id="IV2" min="0" max="2147483647" step="1" />
+      </td>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <td>
+        <textarea id="output1"></textarea>
+      </td>
+      <td>
+        <textarea id="output2"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <canvas id="myChart1" />
+      </td>
+      <td>
+        <canvas id="myChart2" />
+      </td>
+    </tr>
+  </table>
+  <div id="root"></div>
+  <script src="/js/index.js"></script>
+</body>
+</html>
