@@ -8,6 +8,7 @@
 body {
   height: 100%;
   overflow-x: hidden;
+  font-family: sans-serif;
 }
 
 body,
@@ -26,19 +27,20 @@ h1 {
   margin: 0;
 }
 
-body {
-  font-family: sans-serif;
-}
 h1,
 h2 {
   color: green;
 }
+
 label {
   width: auto;
+  display: block;
 }
+
 table {
   width: 100%;
 }
+
 td {
   width: 50%;
 }
@@ -80,14 +82,16 @@ div[hidden] {
   height: 0px;
 }
 
-label {
-  display: block;
-}
-
 textarea {
   padding: 0px;
   width: calc(100% - 10px);
   height: 80px;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+  overflow-y: scroll;
+  resize: none;
 }
 
 #alphabet1,
@@ -111,15 +115,6 @@ textarea:focus {
   outline-style: hidden;
   outline-color: transparent;
   outline-width: 0px;
-}
-
-textarea {
-  -webkit-transition: all 0.1s ease;
-  -moz-transition: all 0.1s ease;
-  -o-transition: all 0.1s ease;
-  transition: all 0.1s ease;
-  overflow-y: scroll;
-  resize: none;
 }
 
 textarea:-webkit-scrollbar-thumb {

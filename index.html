@@ -2,10 +2,18 @@
 <html lang="en" xml:lang="en">
 
 <head>
+  <style>
+    body {
+      visibility: hidden;
+    }
+  </style>
   <title>Parcel Sandbox</title>
-  <meta charset="UTF-8" />
   <link rel="stylesheet" href="css/styles.css" />
-</head>
+  <meta charset=" UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Caesar Cipher +1" />
+  <meta name="keywords" content="Caesar Cipher, encryption, decryption, cryptography" />
 
 <body>
   <h1>Caesar Cipher +1</h1>
@@ -19,7 +27,7 @@
     <tbody>
       <tr>
         <td>
-          <label for="plaintext1">plaintext:</label>
+          <label for=" plaintext1">plaintext:</label>
           <textarea id="plaintext1">
 The atmosphere of Mars is about 100 times thinner than Earth's, and it is 95 percent carbon dioxide. Here's a breakdown of its composition, according to a NASA fact sheet:
 
@@ -127,8 +135,7 @@ Also, minor amounts of: water, nitrogen oxide, neon, hydrogen-deuterium-oxygen, 
             <option value="doughnut">Donut</option>
           </select>
         </td>
-        <td>
-        </td>
+        <td></td>
       </tr>
       <tr>
         <td>
@@ -142,6 +149,11 @@ Also, minor amounts of: water, nitrogen oxide, neon, hydrogen-deuterium-oxygen, 
   </table>
   <div id="root"></div>
   <script type="module" src="index.js"></script>
+  <script>
+    document.fonts.ready.then(function () {
+      document.body.style.visibility = 'visible';
+    });
+  </script>
 </body>
 
 </html>

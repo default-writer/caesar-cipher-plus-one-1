@@ -203,8 +203,8 @@ function createChart(chart, ctx, type) {
   const oldData = chart.data;
   chart.destroy();
   return new Chart(ctx, {
-  type: type,
-  data: oldData,
+    type: type,
+    data: oldData,
     options: {
       responsive: true,
       elements: {
@@ -273,7 +273,7 @@ export function ui() {
   IV2.addEventListener("input", event => {
     event.preventDefault();
     decrypt_();
-  });  
+  });
   alphabet1.addEventListener("input", event => {
     event.preventDefault();
     sha_alphabet1.value = sha1(alphabet);
