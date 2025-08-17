@@ -50,7 +50,7 @@ sha_alphabet1.readOnly = true;
 sha_plaintext1.readOnly = true;
 
 const chart1 = new Chart(ctx1, {
-  type: "doughnut",
+  type: "line",
   data: { labels: [], datasets: [{}] },
   options: {
     elements: {
@@ -67,7 +67,7 @@ const chart1 = new Chart(ctx1, {
   }
 });
 const chart2 = new Chart(ctx2, {
-  type: "doughnut",
+  type: "line",
   data: { labels: [], datasets: [{}] },
   options: {
     elements: {
