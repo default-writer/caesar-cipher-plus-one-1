@@ -1,4 +1,5 @@
-import { Chart } from "../node_modules/chart.js/dist/Chart.js";
+import { Chart, registerables } from "chart.js";
+Chart.register(...registerables);
 
 import {
   sha1,
@@ -50,7 +51,7 @@ sha_plaintext1.readOnly = true;
 
 const chart1 = new Chart(ctx1, {
   type: "doughnut",
-  data: [],
+  data: { labels: [], datasets: [{}] },
   options: {
     elements: {
       arc: {
@@ -58,14 +59,16 @@ const chart1 = new Chart(ctx1, {
         borderColor: "rgba(0,127,0,0.25)"
       }
     },
-    legend: {
-      display: false
+    plugins: {
+      legend: {
+        display: false
+      }
     }
   }
 });
 const chart2 = new Chart(ctx2, {
   type: "doughnut",
-  data: [],
+  data: { labels: [], datasets: [{}] },
   options: {
     elements: {
       arc: {
@@ -73,8 +76,10 @@ const chart2 = new Chart(ctx2, {
         borderColor: "rgba(0,127,0,0.25)"
       }
     },
-    legend: {
-      display: false
+    plugins: {
+      legend: {
+        display: false
+      }
     }
   }
 });
