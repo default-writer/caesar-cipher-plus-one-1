@@ -1,3 +1,4 @@
+#!/usr/bin/env pwsh
 & git reset HEAD --hard 
 & git clean -f -x -q -d
 & npm i
