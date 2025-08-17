@@ -3,7 +3,8 @@
   "license": "MIT",
   "version": "1.0.0",
   "devDependencies": {
-    "parcel": "^2.15.4"
+    "parcel": "^2.15.4",
+    "sirv-cli": "^3.0.1"
   },
   "dependencies": {
     "chart.js": "^4.5.0",
@@ -11,6 +12,8 @@
   },
   "scripts": {
     "build": "parcel build index.html",
-    "dev": "parcel index.html"
+    "dev": "parcel index.html",
+    "start": "sirv dist",
+    "start:dev": "sirv dist --dev"
   }
 }
