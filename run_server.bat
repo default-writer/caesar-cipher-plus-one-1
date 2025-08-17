@@ -1,1 +1,0 @@
-powershell -ExecutionPolicy Bypass -Command "python -m http.server 8000"
