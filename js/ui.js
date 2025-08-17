@@ -45,12 +45,13 @@ const encrypt = document.getElementById("encrypt");
 const decrypt = document.getElementById("decrypt");
 const ctx1 = document.getElementById("myChart1").getContext("2d");
 const ctx2 = document.getElementById("myChart2").getContext("2d");
+const chartType = document.getElementById("chartType");
 
 sha_alphabet1.readOnly = true;
 sha_plaintext1.readOnly = true;
 
-const chart1 = new Chart(ctx1, {
-  type: "line",
+let chart1 = new Chart(ctx1, {
+  type: chartType.value,
   data: { labels: [], datasets: [{}] },
   options: {
     elements: {
@@ -66,8 +67,8 @@ const chart1 = new Chart(ctx1, {
     }
   }
 });
-const chart2 = new Chart(ctx2, {
-  type: "line",
+let chart2 = new Chart(ctx2, {
+  type: chartType.value,
   data: { labels: [], datasets: [{}] },
   options: {
     elements: {
@@ -198,7 +199,34 @@ function decrypt_() {
   update_chart2(output2.value);
 }
 
+function createChart(chart, ctx, type) {
+  const oldData = chart.data;
+  chart.destroy();
+  return new Chart(ctx, {
+  type: type,
+  data: oldData,
+    options: {
+      responsive: true,
+      elements: {
+        arc: {
+          borderWidth: 1,
+          borderColor: "rgba(0,127,0,0.25)"
+        }
+      },
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    }
+  });
+}
+
 export function ui() {
+  chartType.addEventListener("change", (event) => {
+    chart1 = createChart(chart1, ctx1, chartType.value);
+    chart2 = createChart(chart2, ctx2, chartType.value);
+  });
   upload_json.addEventListener("change", event => {
     event.preventDefault();
     if (upload_json.files.length === 1) {
@@ -242,6 +270,10 @@ export function ui() {
     event.preventDefault();
     encrypt_();
   });
+  IV2.addEventListener("input", event => {
+    event.preventDefault();
+    decrypt_();
+  });  
   alphabet1.addEventListener("input", event => {
     event.preventDefault();
     sha_alphabet1.value = sha1(alphabet);
@@ -282,6 +314,10 @@ export function ui() {
   shift1.addEventListener("change", event => {
     event.preventDefault();
     encrypt_();
+  });
+  shift2.addEventListener("change", event => {
+    event.preventDefault();
+    decrypt_();
   });
   encrypt.addEventListener("click", event => {
     event.preventDefault();
