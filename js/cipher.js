@@ -3,9 +3,9 @@ import { prng } from "./prng";
 import { default_alphabet } from "./alphabet";
 import { default_plaintext, seed, min, max } from "./common";
 
-export var rnd = new prng(seed);
-export var alphabet = [...default_alphabet];
-export var plaintext = [...default_plaintext];
+export let rnd = new prng(seed);
+export let alphabet = [...default_alphabet];
+export let plaintext = [...default_plaintext];
 
 export function set_alphabet(text) {
   alphabet = [...text];
@@ -53,7 +53,7 @@ function shuffle(array, seed, rng) {
 }
 
 function cipher_function(cipher) {
-  return function(random, shift, alpha, array, sha_alphabet, sha_plaintext) {
+  return function (random, shift, alpha, array, sha_alphabet, sha_plaintext) {
     alphabet = alpha;
     shuffle_binb(alphabet, sha_alphabet);
     shuffle_binb(alphabet, sha_plaintext);

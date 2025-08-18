@@ -16,6 +16,7 @@ import {
 import { click, saveAs } from "./io";
 import { default_alphabet } from "./alphabet";
 import { update_chart } from "./charts";
+import { QRCode } from "./qrcode";
 
 const alphabet1 = document.getElementById("alphabet1");
 const plaintext1 = document.getElementById("plaintext1");
@@ -46,6 +47,18 @@ const decrypt = document.getElementById("decrypt");
 const ctx1 = document.getElementById("myChart1").getContext("2d");
 const ctx2 = document.getElementById("myChart2").getContext("2d");
 const chartType = document.getElementById("chartType");
+const qrCode1Placeholder = document.getElementById("qrCode1");
+const qrCode2Placeholder = document.getElementById("qrCode2");
+
+let options1 = {
+  typeNumber: 40,
+  el: qrCode1Placeholder
+};
+
+let options2 = {
+  typeNumber: 40,
+  el: qrCode2Placeholder
+};
 
 sha_alphabet1.readOnly = true;
 sha_plaintext1.readOnly = true;
@@ -84,6 +97,27 @@ let chart2 = new Chart(ctx2, {
     }
   }
 });
+
+const qrCode1 = new QRCode(options1);
+const qrCode2 = new QRCode(options2);
+
+function makeCode1() {
+  qrCode1.makeCode(output1.value);
+}
+
+function makeCode2() {
+  qrCode2.makeCode(output2.value);
+}
+
+function updateQRCode1() {
+  clearTimeout(options1.timeout);
+  options1.timeout = setTimeout(makeCode1, 5000);
+}
+
+function updateQRCode2() {
+  clearTimeout(options2.timeout);
+  options2.timeout = setTimeout(makeCode2, 5000);
+}
 
 function update_chart1(array) {
   return update_chart(chart1)(array);
@@ -185,6 +219,7 @@ function encrypt_() {
     sha_plaintext1.value
   ).join("");
   update_chart1(output1.value);
+  updateQRCode1();
 }
 
 function decrypt_() {
@@ -197,6 +232,7 @@ function decrypt_() {
     sha_plaintext2.value
   ).join("");
   update_chart2(output2.value);
+  updateQRCode2();
 }
 
 function createChart(chart, ctx, type) {
@@ -327,5 +363,6 @@ export function ui() {
     event.preventDefault();
     decrypt_();
   });
+
   default_();
 }
