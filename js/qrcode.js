@@ -98,8 +98,6 @@ class QR8bitByte {
 
 			this.parsedData = this.parsedData.concat(byteArray);
 		}
-
-		this.parsedData = this.parsedData.concat(this.parsedData);
 	}
 	getLength(buffer) {
 		return this.parsedData.length;
