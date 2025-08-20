@@ -916,18 +916,13 @@ class QRCode {
 			this._el = this._htOption.el;
 		}
 	}
-	createImgTag(nWidth, nHeight) {
-		var oInstance = this;
-		var oDrawing = new Drawing(this._el, nWidth, nHeight);
-		oDrawing.draw(this._oQRCode);
-		return oInstance._el.innerHTML;
-	}
 	makeCode(sText) {
 		this._oQRCode = new QRCodeModel(this, this._htOption.typeNumber, this._htOption.correctLevel);
 		this._oQRCode.addData(sText);
 		this._oQRCode.make();
 		this._el.title = sText;
-		this._el.innerHTML = this.createImgTag(this._htOption.width, this._htOption.height);
+		var oDrawing = new Drawing(this._el, this._htOption.width, this._htOption.height);
+		oDrawing.draw(this._oQRCode);
 	}
 }
 
@@ -945,28 +940,25 @@ class Drawing {
 		var nWidth = Math.floor(nWidth / nCount);
 		var nHeight = Math.floor(nHeight / nCount);
 		this.clear();
-		var oTable = document.createElement("table");
-		oTable.className = "qr-table";
-		oTable.style.border = "0";
-		oTable.style.borderCollapse = "collapse";
-		oTable.style.backgroundColor = oQRCode.qrCode._htOption.colorLight;
-		for (var i = 0; i < nCount; i++) {
-			var oRow = document.createElement("tr");
-			oRow.style.border = "0";
-			for (var j = 0; j < nCount; j++) {
-				var oCell = document.createElement("td");
-				oCell.style.border = "0";
-				oCell.style.padding = "0";
-				oCell.style.width = nWidth + "px";
-				oCell.style.height = nHeight + "px";
-				if (oQRCode.isDark(i, j)) {
-					oCell.style.backgroundColor = oQRCode.qrCode._htOption.colorDark;
-				}
-				oRow.appendChild(oCell);
+
+		var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+		svg.setAttribute("width", this._nWidth);
+		svg.setAttribute("height", this._nHeight);
+		svg.setAttribute("viewBox", `0 0 ${this._nWidth} ${this._nHeight}`);
+
+		for (var row = 0; row < nCount; row++) {
+			for (var col = 0; col < nCount; col++) {
+				var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+				rect.setAttribute("x", col * nWidth);
+				rect.setAttribute("y", row * nHeight);
+				rect.setAttribute("width", nWidth);
+				rect.setAttribute("height", nHeight);
+				rect.setAttribute("fill", oQRCode.isDark(row, col) ? oQRCode.qrCode._htOption.colorDark : oQRCode.qrCode._htOption.colorLight);
+				svg.appendChild(rect);
 			}
-			oTable.appendChild(oRow);
 		}
-		_el.appendChild(oTable);
+
+		_el.appendChild(svg);
 	}
 	clear() {
 		this._el.innerHTML = '';
