@@ -1,10 +1,9 @@
 export const default_alphabet = [
-  ..."~!@#$%^&*()_+QWERTYUIOP{}|ASDFGHJKL:\"ZXCVBNM<>?`1234567890-=qwertyuiop[]\\asdfghjkl;'zxcvbnm,./ ",
-  "\n"
+  ..."~!@#$%^&*()_+QWERTYUIOP{}|ASDFGHJKL:\"ZXCVBNM<>?`1234567890-=qwertyuiop[]\\asdfghjkl;'zxcvbnm,./ \n"
 ];
 
 function sort(array) {
-  return array.sort(function(a, b) {
+  return array.sort(function (a, b) {
     var firstLetter = a[0],
       firstNum = a[1],
       secondLetter = b[0],
@@ -44,7 +43,7 @@ export function frequency(text) {
 }
 
 export function convert(obj) {
-  return Object.keys(obj).map(function(key) {
+  return Object.keys(obj).map(function (key) {
     return [key, obj[key]];
   });
 }

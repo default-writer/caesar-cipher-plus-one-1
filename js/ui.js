@@ -340,7 +340,7 @@ export function ui() {
   });
   alphabet_basic.addEventListener("click", event => {
     event.preventDefault();
-    set_alphabet("йцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮQWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890 ~`!1@2#3$4%5^6&7*8(9)0_-+={[}\"'<,>.?/|\\\n");
+    set_alphabet("~!@#$%^&*()_+QWERTYUIOP{}|ASDFGHJKL:\"ZXCVBNM<>?`1234567890-=qwertyuiop[]\\asdfghjkl;'zxcvbnm,./ \n");
     set_plaintext("This is a demo QR-code messenger which is used for faster communication between teams. What else do you need to encrypt messages publically? Secret code which shares QR-code privacy for one it is targeted for.\r\n\r\nLook out honey 'cause I'm using technology.\r\n--Iggy Pop, \"Search and Destroy\"");
     alphabet1.value = alphabet.join("");
     sha_alphabet1.value = sha1(alphabet);
