@@ -920,7 +920,6 @@ class QRCode {
 		this._oQRCode = new QRCodeModel(this, this._htOption.typeNumber, this._htOption.correctLevel);
 		this._oQRCode.addData(sText);
 		this._oQRCode.make();
-		this._el.title = sText;
 		var oDrawing = new Drawing(this._el, this._htOption.width, this._htOption.height);
 		oDrawing.draw(this._oQRCode);
 	}

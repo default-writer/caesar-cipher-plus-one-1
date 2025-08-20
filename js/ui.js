@@ -51,11 +51,19 @@ const qrCode1Placeholder = document.getElementById("qrCode1");
 const qrCode2Placeholder = document.getElementById("qrCode2");
 
 let options1 = {
+  width: 512,
+  height: 512,
+  colorDark: "#000000",
+  colorLight: "#FFFFFF",
   typeNumber: 40,
   el: qrCode1Placeholder
 };
 
 let options2 = {
+  width: 512,
+  height: 512,
+  colorDark: "#000000",
+  colorLight: "#FFFFFF",
   typeNumber: 40,
   el: qrCode2Placeholder
 };
@@ -111,12 +119,12 @@ function makeCode2() {
 
 function updateQRCode1() {
   clearTimeout(options1.timeout);
-  options1.timeout = setTimeout(makeCode1, 5000);
+  options1.timeout = setTimeout(makeCode1, 1000);
 }
 
 function updateQRCode2() {
   clearTimeout(options2.timeout);
-  options2.timeout = setTimeout(makeCode2, 5000);
+  options2.timeout = setTimeout(makeCode2, 1000);
 }
 
 function update_chart1(array) {
@@ -332,8 +340,8 @@ export function ui() {
   });
   alphabet_basic.addEventListener("click", event => {
     event.preventDefault();
-    set_alphabet("QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890 .\n");
-    set_plaintext("This is a text.");
+    set_alphabet("йцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮQWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890 ~`!1@2#3$4%5^6&7*8(9)0_-+={[}\"'<,>.?/|\\\n");
+    set_plaintext("This is a demo QR-code messenger which is used for faster communication between teams. What else do you need to encrypt messages publically? Secret code which shares QR-code privacy for one it is targeted for.\r\n\r\nLook out honey 'cause I'm using technology.\r\n--Iggy Pop, \"Search and Destroy\"");
     alphabet1.value = alphabet.join("");
     sha_alphabet1.value = sha1(alphabet);
     plaintext1.value = plaintext.join("");
