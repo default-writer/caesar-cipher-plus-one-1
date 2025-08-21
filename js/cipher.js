@@ -1,53 +1,64 @@
 import { hex_sha1, hex2binb } from "./sha1";
 import { prng } from "./prng";
-import { default_alphabet } from "./alphabet";
-import { default_plaintext, seed, min, max } from "./common";
+import { default_alphabet, default_plaintext, seed, min, max } from "./constants";
 
-export let rnd = new prng(seed);
-export let alphabet = [...default_alphabet];
-export let plaintext = [...default_plaintext];
+let rnd = new prng(seed);
+let alphabet = [...default_alphabet];
+let plaintext = [...default_plaintext];
 
-export function set_alphabet(text) {
+function get_alphabet(text) {
+  return [...alphabet];
+}
+
+function set_alphabet(text) {
   alphabet = [...text];
 }
 
-export function set_plaintext(text) {
+function get_plaintext(text) {
+  return [...plaintext];
+}
+
+function set_plaintext(text) {
   plaintext = [...text];
 }
 
-export function random() {
+function random() {
   return Math.floor(rnd.next(min, max));
 }
 
-export function sha1(array) {
+function sha1(array) {
   return hex_sha1(array.join(""));
 }
 
-export function decrypt_cipher(...chars) {
+function decrypt_cipher(...chars) {
   return cipher_function(shift_decrypt)(...chars);
 }
 
-export function encrypt_cipher(...chars) {
+function encrypt_cipher(...chars) {
   return cipher_function(shift_encrypt)(...chars);
 }
 
-export function random_key() {
+function random_key() {
   shuffle(alphabet, random());
 }
 
-export function default_key() {
+function default_key() {
   alphabet = [...default_alphabet];
   plaintext = [...default_plaintext];
+}
+
+function set_rnd(seed) {
+  rnd = new prng(seed);
 }
 
 function size() {
   return alphabet.length;
 }
 
-function shuffle(array, seed, rng) {
-  rng = new prng(seed);
+function shuffle(array, seed) {
+  set_rnd(seed);
   for (let i = array.length - 1; i > 0; i--) {
-    let j = Math.floor(rng.next(i));
+    let j = Math.floor(rnd.next(i));
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
@@ -57,7 +68,7 @@ function cipher_function(cipher) {
     alphabet = alpha;
     shuffle_binb(alphabet, sha_alphabet);
     shuffle_binb(alphabet, sha_plaintext);
-    rnd = new prng(random);
+    set_rnd(random)
     for (let i = 0; i < shift; i++) {
       array = array.map(cipher);
     }
@@ -100,3 +111,5 @@ function shift_decrypt(char) {
   while (newPosition === position) newPosition = previous_position(char);
   return alphabet[newPosition];
 }
+
+export { get_alphabet, get_plaintext, set_alphabet, set_plaintext, random, sha1, max, decrypt_cipher, encrypt_cipher, random_key, default_key };

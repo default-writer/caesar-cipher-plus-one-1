@@ -4,17 +4,22 @@ Chart.register(...registerables);
 import {
   sha1,
   random,
-  alphabet,
-  plaintext,
+  get_alphabet,
+  get_plaintext,
+  set_alphabet,
   set_plaintext,
   random_key,
-  encrypt_cipher,
-  decrypt_cipher,
   default_key,
-  set_alphabet
+  encrypt_cipher,
+  decrypt_cipher
 } from "./cipher";
+
+import {
+  default_alphabet,
+  default_plaintext
+} from "./constants";
+
 import { click, saveAs } from "./io";
-import { default_alphabet } from "./alphabet";
 import { update_chart } from "./charts";
 import { QRCode } from "./qrcode";
 
@@ -188,15 +193,15 @@ function read(file) {
 
 function init_() {
   default_key();
-  alphabet1.value = alphabet.join("");
-  plaintext1.value = plaintext.join("");
-  sha_alphabet1.value = sha1(alphabet);
-  sha_plaintext1.value = sha1(plaintext);
+  alphabet1.value = get_alphabet().join("");
+  plaintext1.value = get_plaintext().join("");
+  sha_alphabet1.value = sha1(get_alphabet());
+  sha_plaintext1.value = sha1(get_plaintext());
   IV1.value = 1;
   shift1.value = 1;
   IV2.value = 1;
   shift2.value = 1;
-  plaintext2.value = plaintext.value;
+  plaintext2.value = get_plaintext().join("");
 }
 
 function prepare1_() {
@@ -320,13 +325,13 @@ export function ui() {
   });
   alphabet1.addEventListener("input", event => {
     event.preventDefault();
-    sha_alphabet1.value = sha1(alphabet);
+    sha_alphabet1.value = sha1(get_alphabet());
     encrypt_();
   });
   plaintext1.addEventListener("input", event => {
     event.preventDefault();
     set_plaintext(plaintext1.value);
-    sha_plaintext1.value = sha1(plaintext);
+    sha_plaintext1.value = sha1(get_plaintext());
     encrypt_();
   });
   randomize.addEventListener("click", event => {
@@ -340,19 +345,19 @@ export function ui() {
   });
   alphabet_basic.addEventListener("click", event => {
     event.preventDefault();
-    set_alphabet("~!@#$%^&*()_+QWERTYUIOP{}|ASDFGHJKL:\"ZXCVBNM<>?`1234567890-=qwertyuiop[]\\asdfghjkl;'zxcvbnm,./ \n");
-    set_plaintext("This is a demo QR-code messenger which is used for faster communication between teams. What else do you need to encrypt messages publically? Secret code which shares QR-code privacy for one it is targeted for.\r\n\r\nLook out honey 'cause I'm using technology.\r\n--Iggy Pop, \"Search and Destroy\"");
-    alphabet1.value = alphabet.join("");
-    sha_alphabet1.value = sha1(alphabet);
-    plaintext1.value = plaintext.join("");
-    sha_plaintext1.value = sha1(plaintext);
+    set_alphabet(default_alphabet);
+    set_plaintext(default_plaintext);
+    alphabet1.value = get_alphabet().join("");
+    sha_alphabet1.value = sha1(get_alphabet());
+    plaintext1.value = get_plaintext().join("");
+    sha_plaintext1.value = sha1(get_plaintext());
     encrypt_();
   });
   alphabet_random.addEventListener("click", event => {
     event.preventDefault();
     random_key();
-    alphabet1.value = alphabet.join("");
-    sha_alphabet1.value = sha1(alphabet);
+    alphabet1.value = get_alphabet().join("");
+    sha_alphabet1.value = sha1(get_alphabet());
     encrypt_();
   });
   shift1.addEventListener("change", event => {
